@@ -109,6 +109,8 @@ function generatePassword() {
     "~",
   ];
 
+  let charListSelected = [];
+
   let criteriaLengthValidate = function (criteriaLength) {
     if (criteriaLength > 7 && criteriaLength < 129) {
       console.log("criteriaLengthValidate: " + true);
@@ -136,6 +138,26 @@ function generatePassword() {
     } else {
       console.log("criteriaSelectedValidate: " + false);
       return false;
+    }
+  };
+
+  let charListMerge = function (
+    criteriaLowerCase,
+    criteriaUpperCase,
+    criteriaNumeric,
+    criteriaSpecial
+  ) {
+    if (criteriaLowerCase) {
+      charListSelected = charListSelected.concat(charListLowerCase);
+    }
+    if (criteriaUpperCase) {
+      charListSelected = charListSelected.concat(charListUpperCase);
+    }
+    if (criteriaNumeric) {
+      charListSelected = charListSelected.concat(charListNumeric);
+    }
+    if (criteriaSpecial) {
+      charListSelected = charListSelected.concat(charListSpecial);
     }
   };
 
@@ -168,8 +190,17 @@ function generatePassword() {
       criteriaNumeric,
       criteriaSpecial
     );
+    charListMerge(
+      criteriaLowerCase,
+      criteriaUpperCase,
+      criteriaNumeric,
+      criteriaSpecial
+    );
+    console.log(charListSelected);
   }
 }
+
+// console.log(elements.join(''));
 
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
