@@ -15,15 +15,107 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   /////////////////////////// WRITE YOUR CODE HERE /////////////////////////
+  const charListLowerCase = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  const charListUpperCase = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  const charListNumeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const charListSpecial = [
+    " ",
+    "!",
+    '"',
+    "#",
+    "$",
+    "%",
+    "&",
+    "'",
+    "(",
+    ")",
+    "*",
+    "+",
+    ",",
+    "-",
+    ".",
+    "/",
+    ":",
+    ";",
+    "<",
+    "=",
+    ">",
+    "?",
+    "@",
+    "[",
+    "\\",
+    "]",
+    "^",
+    "_",
+    "`",
+    "{",
+    "|",
+    "}",
+    "~",
+  ];
+
   let criteriaLengthValidate = function (criteriaLength) {
     if (criteriaLength > 7 && criteriaLength < 129) {
-      criteriaLengthValidate = true;
-      console.log("criteriaLength: " + criteriaLength);
-      console.log("criteriaLengthValidate: " + criteriaLengthValidate);
+      console.log("criteriaLengthValidate: " + true);
+      return true;
     } else {
-      criteriaLengthValidate = false;
-      console.log("criteriaLength: " + criteriaLength);
-      console.log("criteriaLengthValidate: " + criteriaLengthValidate);
+      console.log("criteriaLengthValidate: " + false);
+      return false;
     }
   };
 
@@ -39,11 +131,11 @@ function generatePassword() {
       criteriaNumeric ||
       criteriaSpecial
     ) {
-      criteriaSelectedValidate = true;
-      console.log("criteriaSelectedValidate): " + criteriaSelectedValidate);
+      console.log("criteriaSelectedValidate: " + true);
+      return true;
     } else {
-      criteriaSelectedValidate = false;
-      console.log("criteriaSelectedValidate): " + criteriaSelectedValidate);
+      console.log("criteriaSelectedValidate: " + false);
+      return false;
     }
   };
 
@@ -52,23 +144,22 @@ function generatePassword() {
       "\n" +
       "Minimum required is 8. Maximum allowed is 128"
   );
-  // let criteriaLengthValidate = true;
   criteriaLengthValidate(criteriaLength);
   if (criteriaLengthValidate) {
     let criteriaLowerCase = window.confirm(
-      "Would you like for you password to include lower case characters?"
+      "Would you like for your password to include lower case characters?"
     );
     console.log("criteriaLowerCase: " + criteriaLowerCase);
     let criteriaUpperCase = window.confirm(
-      "Would you like for you password to include upper case characters?"
+      "Would you like for your password to include upper case characters?"
     );
     console.log("criteriaUpperCase: " + criteriaUpperCase);
     let criteriaNumeric = window.confirm(
-      "Would you like for you password to include numeric characters?"
+      "Would you like for your password to include numeric characters?"
     );
     console.log("criteriaNumeric: " + criteriaNumeric);
     let criteriaSpecial = window.confirm(
-      "Would you like for you password to include special characters?"
+      "Would you like for your password to include special characters?"
     );
     console.log("criteriaSpecial: " + criteriaSpecial);
     criteriaSelectedValidate(
@@ -78,8 +169,6 @@ function generatePassword() {
       criteriaSpecial
     );
   }
-
-
 }
 
 // GIVEN I need a new, secure password
