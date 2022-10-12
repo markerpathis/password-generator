@@ -15,6 +15,10 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
   /////////////////////////// WRITE YOUR CODE HERE /////////////////////////
+
+  //variable that will be returned at the end of the funtion that includes the characters for the password
+  let savedPassword = "";
+
   const charListLowerCase = [
     "a",
     "b",
@@ -201,13 +205,14 @@ function generatePassword() {
       criteriaSpecial
     );
 
-    let savedPassword = "";
+    // let savedPassword = "";
     for (var i = 0; i < criteriaLength; i++) {
       let mergePassword =
         charListSelected[Math.floor(Math.random() * charListSelected.length)];
       savedPassword = savedPassword.concat(mergePassword);
       console.log("saved password: " + savedPassword);
+      //need to validate if the password contains all the required criteria. Use .contains, if not true, set i to 0 and clear out the mergePassword field
     }
-    alert(savedPassword);
   }
+  return savedPassword;
 }
