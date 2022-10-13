@@ -120,10 +120,10 @@ function generatePassword() {
     "~",
   ];
 
-  // Emptry array which will be populated using the charListMerge function after the criteria for the password is selected
+  // Emptry array  will be populated using the charListMerge function after the criteria for the password is selected
   let charListSelected = [];
 
-  // Function determines if the
+  // Function will determine if the password length from the user is 8 - 128 characters
   let criteriaLengthValidate = function (criteriaLength) {
     if (criteriaLength > 7 && criteriaLength < 129) {
       console.log("criteriaLengthValidate: " + true);
@@ -134,6 +134,7 @@ function generatePassword() {
     }
   };
 
+  // Function will validate that at least one character criteria is selected by the user
   let criteriaSelectedValidate = function (
     criteriaLowerCase,
     criteriaUpperCase,
@@ -154,6 +155,7 @@ function generatePassword() {
     }
   };
 
+  // Function will concatenate the characters from the selected character type arrays into a new array
   let charListMerge = function (
     criteriaLowerCase,
     criteriaUpperCase,
@@ -174,16 +176,23 @@ function generatePassword() {
     }
   };
 
+  // Prompt user to enter the number of characters for their password
   let criteriaLength = prompt(
     "Please enter the number of characters for your password." +
       "\n" +
       "Minimum required is 8. Maximum allowed is 128"
   );
-  // converts type of value to number. Otherwise it will be a string.
+
+  // Converts type of value to number. Otherwise it will be a string, which can't be used in the For loop later on
   criteriaLength = Number(criteriaLength);
+
+  // Calls function to validate if the user entered a valid length
   let isValidLength = criteriaLengthValidate(criteriaLength);
   console.log("Type of ctieriaLength: " + typeof criteriaLength);
+
+  // Checks if the criteriaLengthValidate function returned true
   if (isValidLength) {
+    // User is asked to select the criteria for the characters to be used in their password
     let criteriaLowerCase = window.confirm(
       "Would you like for your password to include lower case characters?"
     );
@@ -201,6 +210,7 @@ function generatePassword() {
     );
     console.log("criteriaSpecial: " + criteriaSpecial);
 
+    // Calls funtion to validate that at least one character criteria is selected by the user, otherwise this process will end
     let isValidCriteria = criteriaSelectedValidate(
       criteriaLowerCase,
       criteriaUpperCase,
@@ -208,6 +218,7 @@ function generatePassword() {
       criteriaSpecial
     );
 
+    // If user selected at least one character criteria, the arrays for the selected caracter types will be concatenated into a new array
     if (isValidCriteria) {
       charListMerge(
         criteriaLowerCase,
@@ -216,17 +227,18 @@ function generatePassword() {
         criteriaSpecial
       );
 
+      // Loop randomly selects a character from the newly created array and concatenates it with each iteration
       for (var i = 0; i < criteriaLength; i++) {
         let mergePassword =
           charListSelected[Math.floor(Math.random() * charListSelected.length)];
         savedPassword = savedPassword.concat(mergePassword);
         console.log("saved password: " + savedPassword);
-        //need to validate if the password contains all the required criteria. Use .contains, if not true, set i to 0 and clear out the mergePassword field
       }
     } else {
       return;
     }
   }
   console.log("savedPassword: " + savedPassword);
+  // Returning the saved password will show the password in the text area of the web application
   return savedPassword;
 }
