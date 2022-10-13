@@ -200,24 +200,31 @@ function generatePassword() {
       "Would you like for your password to include special characters?"
     );
     console.log("criteriaSpecial: " + criteriaSpecial);
-    criteriaSelectedValidate(
+
+    let isValidCriteria = criteriaSelectedValidate(
       criteriaLowerCase,
       criteriaUpperCase,
       criteriaNumeric,
       criteriaSpecial
     );
-    charListMerge(
-      criteriaLowerCase,
-      criteriaUpperCase,
-      criteriaNumeric,
-      criteriaSpecial
-    );
-    for (var i = 0; i < criteriaLength; i++) {
-      let mergePassword =
-        charListSelected[Math.floor(Math.random() * charListSelected.length)];
-      savedPassword = savedPassword.concat(mergePassword);
-      console.log("saved password: " + savedPassword);
-      //need to validate if the password contains all the required criteria. Use .contains, if not true, set i to 0 and clear out the mergePassword field
+
+    if (isValidCriteria) {
+      charListMerge(
+        criteriaLowerCase,
+        criteriaUpperCase,
+        criteriaNumeric,
+        criteriaSpecial
+      );
+
+      for (var i = 0; i < criteriaLength; i++) {
+        let mergePassword =
+          charListSelected[Math.floor(Math.random() * charListSelected.length)];
+        savedPassword = savedPassword.concat(mergePassword);
+        console.log("saved password: " + savedPassword);
+        //need to validate if the password contains all the required criteria. Use .contains, if not true, set i to 0 and clear out the mergePassword field
+      }
+    } else {
+      return;
     }
   }
   console.log("savedPassword: " + savedPassword);
