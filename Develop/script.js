@@ -126,10 +126,8 @@ function generatePassword() {
   // Function will determine if the password length from the user is 8 - 128 characters
   let criteriaLengthValidate = function (criteriaLength) {
     if (criteriaLength > 7 && criteriaLength < 129) {
-      console.log("criteriaLengthValidate: " + true);
       return true;
     } else {
-      console.log("criteriaLengthValidate: " + false);
       return false;
     }
   };
@@ -147,10 +145,8 @@ function generatePassword() {
       criteriaNumeric ||
       criteriaSpecial
     ) {
-      console.log("criteriaSelectedValidate: " + true);
       return true;
     } else {
-      console.log("criteriaSelectedValidate: " + false);
       return false;
     }
   };
@@ -188,7 +184,6 @@ function generatePassword() {
 
   // Calls function to validate if the user entered a valid length
   let isValidLength = criteriaLengthValidate(criteriaLength);
-  console.log("Type of ctieriaLength: " + typeof criteriaLength);
 
   // Checks if the criteriaLengthValidate function returned true
   if (isValidLength) {
@@ -196,19 +191,15 @@ function generatePassword() {
     let criteriaLowerCase = window.confirm(
       "Would you like for your password to include lower case characters?"
     );
-    console.log("criteriaLowerCase: " + criteriaLowerCase);
     let criteriaUpperCase = window.confirm(
       "Would you like for your password to include upper case characters?"
     );
-    console.log("criteriaUpperCase: " + criteriaUpperCase);
     let criteriaNumeric = window.confirm(
       "Would you like for your password to include numeric characters?"
     );
-    console.log("criteriaNumeric: " + criteriaNumeric);
     let criteriaSpecial = window.confirm(
       "Would you like for your password to include special characters?"
     );
-    console.log("criteriaSpecial: " + criteriaSpecial);
 
     // Calls funtion to validate that at least one character criteria is selected by the user, otherwise this process will end
     let isValidCriteria = criteriaSelectedValidate(
@@ -232,13 +223,11 @@ function generatePassword() {
         let mergePassword =
           charListSelected[Math.floor(Math.random() * charListSelected.length)];
         savedPassword = savedPassword.concat(mergePassword);
-        console.log("saved password: " + savedPassword);
       }
     } else {
       return;
     }
   }
-  console.log("savedPassword: " + savedPassword);
   // Returning the saved password will show the password in the text area of the web application
   return savedPassword;
 }
