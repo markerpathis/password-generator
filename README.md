@@ -23,7 +23,7 @@ Below are links to the deployed web application and the repository on GitHub.
 
 Below is a screenshot of the web application:
 
-![alt text](Develop/assets/passwordGenerator.png)
+![alt text](/assets/images/passwordGenerator.png)
 
 ## Credits
 
