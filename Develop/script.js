@@ -123,7 +123,7 @@ function generatePassword() {
   // Emptry array  will be populated using the charListMerge function after the criteria for the password is selected
   let charListSelected = [];
 
-  // Function will determine if the password length from the user is 8 - 128 characters
+  // Function will determine if the password length from the user is between 8 - 128 characters
   let criteriaLengthValidate = function (criteriaLength) {
     if (criteriaLength > 7 && criteriaLength < 129) {
       return true;
